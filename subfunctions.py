@@ -1,5 +1,4 @@
-import re
-from collections import deque, defaultdict, Counter
+from collections import deque
 
 
 def sort_tuples(coords):
@@ -46,7 +45,9 @@ def read_floorplan_text(file):
 
     height = len(lines)
     width = max(len(line) for line in lines)
-    return height, width, lines
+    grid = [list(line.ljust(width)) for line in lines]
+
+    return grid, height, width, lines
 
 
 def count_chars_types_per_room(grid, room_coordinates, target_letters):
